@@ -1,3 +1,5 @@
+import { InputTxt } from './components/InputTxt';
+
 function App() {
   return (
     <>
@@ -11,12 +13,13 @@ function App() {
           */}
 
           <div className="linha1 w-11/12 ">
-            <input
+            {/*             <input
               type="text"
               name="newtodo"
               placeholder="new ToDos"
               className="input input-bordered input-primary w-full"
-            />
+            /> */}
+            <InputTxt></InputTxt>
           </div>
 
           {/* 
