@@ -3,12 +3,19 @@ import React, { useState } from 'react';
 export function InputTxt() {
   //const [pressedKey, setPressedKey] = useState('');
   const [newTodo, setNewTodo] = useState('');
+  const [todos, setTodos] = useState<string[]>([]);
 
   const keyHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     //setPressedKey(event.key);
     if (event.key == 'Enter') {
+      setTodos(updateTodos(newTodo));
       setNewTodo('');
+      console.log(todos);
     }
+  };
+
+  const updateTodos = (newTodo: string) => {
+    return [...todos, newTodo];
   };
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
