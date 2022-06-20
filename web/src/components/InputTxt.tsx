@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 
-export function InputTxt() {
+interface OnPressEnterProps {
+  onPressEnter: (newTodo: string) => void;
+}
+
+export function InputTxt({ onPressEnter }: OnPressEnterProps) {
   const [newTodo, setNewTodo] = useState('');
-  const [todos, setTodos] = useState<string[]>([]);
 
   const keyHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key == 'Enter') {
-      setTodos(updateTodos(newTodo));
+      onPressEnter(newTodo);
       setNewTodo('');
     }
-  };
-
-  const updateTodos = (newTodo: string) => {
-    return [...todos, newTodo];
   };
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,8 +20,6 @@ export function InputTxt() {
 
   return (
     <div>
-      <p>O texto foi:{newTodo}</p>
-      <p>Os Todos são {todos.join(', ')}</p>
       <input
         onKeyDown={keyHandler}
         onChange={onChangeHandler}
