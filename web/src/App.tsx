@@ -1,6 +1,13 @@
 import { InputTxt } from './components/InputTxt';
-
+import { Listagem } from './components/Listagem';
+import React, { useState } from 'react';
 function App() {
+  const [todos, setTodos] = useState<string[]>([]);
+
+  const handlerSave = (newTodo: string) => {
+    setTodos([...todos, newTodo]);
+  };
+
   return (
     <>
       <div className="flex justify-center text-5xl font-mono font-bold">
@@ -13,13 +20,7 @@ function App() {
           */}
 
           <div className="linha1 w-11/12 ">
-            {/*             <input
-              type="text"
-              name="newtodo"
-              placeholder="new ToDos"
-              className="input input-bordered input-primary w-full"
-            /> */}
-            <InputTxt></InputTxt>
+            <InputTxt onPressEnter={handlerSave}></InputTxt>
           </div>
 
           {/* 
@@ -29,16 +30,7 @@ function App() {
           */}
 
           <div className="linha2 w-11/12 py-8">
-            <div className="flex flex-row">
-              <div className="basis-1/12">
-                <input
-                  type="radio"
-                  name="radio-2"
-                  className="radio radio-primary"
-                />
-              </div>
-              <div className="basis-11/12 ">var com item add</div>
-            </div>
+            <Listagem todoList={todos}></Listagem>
           </div>
 
           {/* 
