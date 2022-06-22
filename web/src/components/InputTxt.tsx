@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 
 interface OnPressEnterProps {
-  onPressEnter: (newTodo: string) => void;
+  onPressEnter: (newTitle: string, newCompleted: boolean) => void;
 }
 
 export function InputTxt({ onPressEnter }: OnPressEnterProps) {
-  const [newTodo, setNewTodo] = useState('');
+  const [newTitle, setNewTitle] = useState('');
 
   const keyHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key == 'Enter') {
-      onPressEnter(newTodo);
-      setNewTodo('');
+      onPressEnter(newTitle, false);
+      setNewTitle('');
     }
   };
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewTodo(event.target.value);
+    setNewTitle(event.target.value);
   };
 
   return (
@@ -27,7 +27,7 @@ export function InputTxt({ onPressEnter }: OnPressEnterProps) {
         name="newtodo"
         placeholder="new ToDos"
         className="input input-bordered input-primary w-full"
-        value={newTodo}
+        value={newTitle}
       />
     </div>
   );
