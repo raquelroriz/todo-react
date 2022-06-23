@@ -1,5 +1,6 @@
 import { InputTxt } from './components/InputTxt';
 import { Listagem } from './components/Listagem';
+import { Contador } from './components/Contador';
 import React, { useState } from 'react';
 
 interface Todo {
@@ -54,7 +55,9 @@ function App() {
 
           <div className="linha3 w-11/12">
             <div className="flex flex-row items-center self-center">
-              <div className="basis-2/12">itens left</div>
+              <div className="basis-2/12">
+                <Contador todoCount={todos.length}></Contador>
+              </div>
 
               <div className="basis-8/12 container mx-auto">
                 <div className="d-inline-flex p-3 justify-center flex flex-row gap-1 items-center ">
