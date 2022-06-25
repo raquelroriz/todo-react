@@ -13,6 +13,7 @@ interface Todo {
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState('');
+
   const handlerSave = (newTitle: string, newCompleted: boolean) => {
     let newTodo: Todo = {
       title: newTitle,
@@ -21,9 +22,21 @@ function App() {
     };
     setTodos([...todos, newTodo]);
   };
-
   const handlerFilter = (newFilter: string) => {
     setFilter(newFilter);
+  };
+  const filteredList = (): Todo[] => {
+    if (filter == 'completed') {
+      return todos.filter(item => {
+        return item.completed == true;
+      });
+    } else if (filter == 'avalible') {
+      return todos.filter(item => {
+        return item.completed == false;
+      });
+    } else {
+      return todos;
+    }
   };
 
   return (
@@ -38,7 +51,7 @@ function App() {
           </div>
 
           <div className="linha2 w-11/12 py-8">
-            <Listagem todoList={todos}></Listagem>
+            <Listagem todoList={filteredList()}></Listagem>
           </div>
 
           <div className="linha3 w-11/12">
