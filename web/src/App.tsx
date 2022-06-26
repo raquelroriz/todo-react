@@ -38,7 +38,9 @@ function App() {
       return todos;
     }
   };
-
+  const handlerUpdate = (newTodoList: Todo[]) => {
+    setTodos(newTodoList);
+  };
   return (
     <>
       <div className="flex justify-center text-5xl font-mono font-bold">
@@ -51,7 +53,10 @@ function App() {
           </div>
 
           <div className="linha2 w-11/12 py-8">
-            <Listagem todoList={filteredList()}></Listagem>
+            <Listagem
+              todoList={filteredList()}
+              onUpdate={handlerUpdate}
+            ></Listagem>
           </div>
 
           <div className="linha3 w-11/12">
