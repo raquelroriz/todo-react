@@ -2,6 +2,7 @@ import { InputTxt } from './components/InputTxt';
 import { Listagem } from './components/Listagem';
 import { Contador } from './components/Contador';
 import { Filtro } from './components/Filtro';
+import { Delete } from './components/Delete';
 import React, { useState } from 'react';
 
 interface Todo {
@@ -41,6 +42,11 @@ function App() {
   const handlerUpdate = (newTodoList: Todo[]) => {
     setTodos(newTodoList);
   };
+  const handlerDelete = () => {
+    const newTodoList = todos.filter(item => item.completed == false);
+    setTodos(newTodoList);
+  };
+
   return (
     <>
       <div className="flex justify-center text-5xl font-mono font-bold">
@@ -70,7 +76,7 @@ function App() {
               </div>
 
               <div className="basis-2/12 gap-5">
-                <button className="btn btn-sm">Clear completed</button>
+                <Delete onPressDelete={handlerDelete}></Delete>
               </div>
             </div>
           </div>
