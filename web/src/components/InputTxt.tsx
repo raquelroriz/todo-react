@@ -6,16 +6,35 @@ interface OnPressEnterProps {
 
 export function InputTxt({ onPressEnter }: OnPressEnterProps) {
   const [newTitle, setNewTitle] = useState('');
+  const [isValid, setValid] = useState(true);
 
   const keyHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key == 'Enter') {
+    const isEnterPressedRule = event.key == 'Enter';
+    const isEmptyRule = newTitle == '';
+
+    if (isEnterPressedRule && !isEmptyRule) {
       onPressEnter(newTitle, false);
       setNewTitle('');
+      setValid(true);
+    } else if (isEnterPressedRule && isEmptyRule) {
+      setValid(false);
     }
   };
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewTitle(event.target.value);
+  };
+
+  const showError = () => {
+    if (isValid == false) {
+      return (
+        <div className="my-2 text-sm text-left text-red-400 ">
+          Preencha antes de adicionar!
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
   };
 
   return (
@@ -26,9 +45,11 @@ export function InputTxt({ onPressEnter }: OnPressEnterProps) {
         type="text"
         name="newtodo"
         placeholder="new ToDos"
-        className="input input-bordered input-primary w-full"
+        className={`input input-bordered w-full 
+        ${isValid ? 'input-primary' : 'input-error'}`}
         value={newTitle}
       />
+      {showError()}
     </div>
   );
 }
