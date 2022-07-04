@@ -68,7 +68,7 @@ function App() {
           <div className="linha3 w-11/12">
             <div className="flex flex-row items-center self-center">
               <div className="basis-2/12">
-                <Contador todoCount={todos.length}></Contador>
+                <Contador todoCount={filteredList().length}></Contador>
               </div>
 
               <div className="basis-8/12 container mx-auto">
