@@ -40,11 +40,11 @@ function App() {
     }
   };
   const handlerUpdate = (newTodoList: Todo[]) => {
-    setTodos(newTodoList);
+    setTodos([...newTodoList]);
   };
   const handlerDelete = () => {
     const newTodoList = todos.filter(item => item.completed == false);
-    setTodos(newTodoList);
+    setTodos([...newTodoList]);
   };
 
   return (
