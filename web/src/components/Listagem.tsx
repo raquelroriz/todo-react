@@ -32,7 +32,12 @@ export function Listagem({ todoList, onUpdate }: TodoListProps) {
             defaultChecked={item.completed}
           />
         </div>
-        <div className="basis-11/12 ">{item.title}</div>
+
+        <div className="basis-11/12">
+          <span className={`${item.completed ? 'line-through' : ''}`}>
+            {item.title}
+          </span>
+        </div>
       </div>
     );
   };
