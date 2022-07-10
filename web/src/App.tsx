@@ -76,7 +76,7 @@ function App() {
               </div>
 
               <div className="basis-2/12 gap-5">
-                <Delete onPressDelete={handlerDelete}></Delete>
+                <Delete onPressDelete={handlerDelete} todoList={todos}></Delete>
               </div>
             </div>
           </div>
