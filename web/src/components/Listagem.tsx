@@ -33,7 +33,7 @@ export function Listagem({ todoList, onUpdate }: TodoListProps) {
           />
         </div>
 
-        <div className="basis-11/12">
+        <div className="basis-11/12 truncate">
           <span className={`${item.completed ? 'line-through' : ''}`}>
             {item.title}
           </span>
